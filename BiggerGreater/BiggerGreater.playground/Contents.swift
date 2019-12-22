@@ -24,11 +24,8 @@ func biggerIsGreater(w: String) -> String {
         
         first = w.utf8[indexFirst]
         second = w.utf8[indexSecond]
-        print("first: \(w[indexFirst]), second: \(w[indexSecond])")
         
         if first >= second {
-            print(first)
-            print(second)
             i -= 1
             j -= 1
         }
@@ -38,35 +35,41 @@ func biggerIsGreater(w: String) -> String {
             while -j < -i {
                 indexSecond = w.index(w.endIndex, offsetBy: j)
                 second = w.utf8[indexSecond]
+                
                 if second > first {
                     str = w
                     str.remove(at: indexFirst)
                     str.insert(w[indexSecond], at: indexFirst)
                     str.remove(at: indexSecond)
                     str.insert(w[indexFirst], at: indexSecond)
-                    print(str)
+                    
+                    
+                    indexFirst = str.index(str.endIndex, offsetBy: i + 1)
+                    let range = indexFirst ..< str.endIndex
+                    let reversedPieceOfString = String(str[range].reversed())
+                        
+                    str.removeSubrange(range)
+                    str.append(reversedPieceOfString)
+                    
                     return str
                 }
                 else {
                     j -= 1
                 }
             }
-            
         }
     }
-    
-    
-    
     return str
 }
 
 
-biggerIsGreater(w: "zzzayybbaa") //результат должен быть zzzbyybaaa
+biggerIsGreater(w: "zzzayybbaa") //результат должен быть zzzbaaabyy
 
 
-//zzzbaaabyy
+
 
 // "hefg" -> hegf
 // "hdck" -> dhkc
+
 
 
