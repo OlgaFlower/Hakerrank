@@ -11,7 +11,7 @@ func biggerIsGreater(w: String) -> String {
     var i = -2
     var j = -1
     
-    if w.count < 1, w.count > 100 {
+    if w.count < 1 || w.count == 1 || w.count > 100 {
         return str
     }
     
@@ -29,7 +29,7 @@ func biggerIsGreater(w: String) -> String {
         first = w.utf8[indexFirst]
         second = w.utf8[indexSecond]
         
-        if first >= second{
+        if first >= second {
             i -= 1
             j -= 1
         }
@@ -67,12 +67,8 @@ func biggerIsGreater(w: String) -> String {
 }
 
 
-biggerIsGreater(w: "ab") 
+print(biggerIsGreater(w: "f"))
 
 
-
-
-// "hefg" -> hegf
-// "hdck" -> dhkc
 
 
