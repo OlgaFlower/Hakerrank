@@ -11,6 +11,10 @@ func biggerIsGreater(w: String) -> String {
     var i = -2
     var j = -1
     
+    if w.count < 1, w.count > 100 {
+        return str
+    }
+    
     var indexFirst = w.index(w.endIndex, offsetBy: i)
     var indexSecond = w.index(w.endIndex, offsetBy: j)
 
@@ -18,14 +22,14 @@ func biggerIsGreater(w: String) -> String {
     var second = w.utf8[indexSecond]
     
     
-    while (-i < w.count) {
+    while (-i <= w.count) {
         indexFirst = w.index(w.endIndex, offsetBy: i)
         indexSecond = w.index(w.endIndex, offsetBy: j)
         
         first = w.utf8[indexFirst]
         second = w.utf8[indexSecond]
         
-        if first >= second {
+        if first >= second{
             i -= 1
             j -= 1
         }
@@ -63,13 +67,12 @@ func biggerIsGreater(w: String) -> String {
 }
 
 
-biggerIsGreater(w: "zzzayybbaa") //результат должен быть zzzbaaabyy
+biggerIsGreater(w: "ab") 
 
 
 
 
 // "hefg" -> hegf
 // "hdck" -> dhkc
-
 
 
