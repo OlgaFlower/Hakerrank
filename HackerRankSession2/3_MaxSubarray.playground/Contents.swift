@@ -19,11 +19,10 @@ func maxSubarray(arr: [Int]) -> [Int] {
     for i in 1...arr.count-1 {
         maxCurrent = max(arr[i], maxCurrent + arr[i])
         if arr[i] > 0 {
+            if maxSubsequence < 0 {
+                maxSubsequence = 0
+            }
             maxSubsequence += arr[i]
-        }
-        
-        if arr[i] < 0 {
-            
         }
         
         if maxCurrent > maxSubarray {
