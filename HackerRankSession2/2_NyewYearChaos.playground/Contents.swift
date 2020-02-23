@@ -1,43 +1,36 @@
 import UIKit
 
 //let queue = [2,1,5,3,4] //3
-//let queue = [2,5,1,3,4] //too chaotic
+let queue = [2,5,1,3,4] //too chaotic
 //let queue = [1,2,5,3,4,7,8,6] //4
-let queue = [1,2,5,3,7,8,6,4] //7
+//let queue = [1,2,5,3,7,8,6,4] //7
 
 func minimumBribes(q: [Int]) -> Void {
-    var isChaotic = false
-    var count = 0
-    var el = 0
-    var arr = q
-
-
-    while el < q.count - 1 {
-
-        if (arr[el] - (el + 1)) > 2 {
-            isChaotic = true
-            break
+    var result = 0
+    
+    for el in 0 ..< q.count {
+        if (q[el] - (el + 1)) > 2 {
+            print("Too chaotic")
+            return
         }
-
-        if arr[el] < arr[el + 1] {
-            el += 1
-        } else {
-
-            let temp = arr[el]
-            arr[el] = arr[el + 1]
-            arr[el + 1] = temp
-
-            count += 1
-            if el > 0 {
-                el -= 1
+        
+        var startIndex: Int {
+            if q[el] - 2 <= 0 {
+                return 0
+            } else {
+                return q[el] - 2
+            }
+        }
+        
+        if startIndex < el {
+            for i in startIndex ..< el {
+                if q[i] > q[el] {
+                    result += 1
+                }
             }
         }
     }
-    if isChaotic == true {
-        print("Too chaotic")
-    } else {
-        print(count)
-    }
+    print(result)
 }
 
 minimumBribes(q: queue)
